@@ -1,0 +1,17 @@
+#default = mean value
+dataFrame.pivot_table(values = row, index = row)
+
+#diff summary stat -> aggfunc = func
+dataFrame.pivot_table(values = row, index = row, aggfunc = np.median)
+
+#multiple summary stat - aggfunc = func list
+dataFrame.pivot_table(values = row, index = row, aggfunc = [np.median, np.mean])
+
+# group by 2 var -> columns = row
+dataFrame.pivot_table(values = row, index = row, columns = row)
+
+# group by 2 var with no NaN values -> fill_value = 0
+dataFrame.pivot_table(values = row, index = row, columns = row, fill_value = 0)
+
+# group by 2 var with no NaN values + margin -> fill_value = 0, margins = True
+dataFrame.pivot_table(values = row, index = row, columns = row, fill_value = 0, margins = True)
