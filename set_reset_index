@@ -1,0 +1,35 @@
+# .columns & .index
+
+# df.columns
+Index([row1, row2, row3, ...], dtype = 'object')
+
+# df.index
+RangeIndex(start = 0, stop = int, step = int)
+
+# Set a row as index:
+df_ind = df.set_index('name')
+
+# undo:
+df_ind.reset_index()
+
+# remove row via reset:
+df_ind.reset_index(drop = True)
+
+# simpler subsetting:
+df[df[row].isin([list])] ->> df_ind.loc[list]	# works for a single item instead of list
+
+# setting multiple rows as index
+df2 = df.set_index([row1, row2])
+
+# subset outer level with list
+df2.loc[list]
+
+# subset inner level with tuple list
+df2.loc[[('outer1','inner1'), ('outer2','inner2')]]
+
+# sort by index
+df2.sort_index(level = [row1, row2], ascending = [bool, bool])
+
+# ! index values are just data
+# ! violates tidy data principles
+# ! need to learn 2 syntaxes (+ bugs)
